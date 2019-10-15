@@ -17,13 +17,16 @@ export default function processNodes(nodes, transform) {
       // return the result of the transform function if applicable
       let transformed;
       if (typeof transform === 'function') {
+        console.log('typeof transform is function, node: ', node);
         transformed = transform(node, index);
         if (transformed === null || !!transformed) {
+          console.log('if transformed === null or !!transformed: ', transformed);
           return transformed;
         }
       }
 
       // otherwise convert the node as standard
+      console.log('otherwise normal conversion, node: ', node);
       return convertNodeToElement(node, index, transform);
 
     });
